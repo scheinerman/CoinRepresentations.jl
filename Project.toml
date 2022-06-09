@@ -1,0 +1,16 @@
+name = "CoinRepresentations"
+uuid = "1902aba7-7a30-46dc-912b-56f3c6050bba"
+authors = ["Ed Scheinerman <ers@jhu.edu>"]
+version = "0.1.0"
+
+
+
+[deps]
+Bijections = "e2ed5e7c-b2de-5872-ae92-c73ca462fb04"
+Clines = "b03ef683-e087-4e84-9649-40693305c655"
+LinearFractionalTransformations = "8bac944d-a3a1-5789-a62e-204935847c3c"
+NLsolve = "2774e3e8-f4cf-5e23-947b-6d7e65073b56"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+RingLists = "286e9d63-9694-5540-9e3c-4e6708fa07b2"
+SimpleDrawing = "d78a06e8-ae74-583c-9a07-0d6572347000"
+SimpleGraphs = "55797a34-41de-5266-9ec1-32ac4eb504d3"
