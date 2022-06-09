@@ -4,7 +4,7 @@ using SimpleGraphs, Clines, RingLists, NLsolve
 using LinearFractionalTransformations, SimpleDrawing, Plots
 
 import SimpleDrawing: draw
-import Base: getindex, keys, values
+import Base: getindex, keys, values, show, length
 
 NL_OPTS = Dict{Symbol,Any}()
 NL_OPTS[:show_trace] = false
@@ -18,7 +18,17 @@ include("radii.jl")
 include("centers.jl")
 
 export CoinRepresentation
-struct CoinRepresentation{T} <: AbstractDict
+
+"""
+    CoinRepresentation(G::SimpleGraph, F)
+
+Given a planar, three-connected graph `G` and its outer face `F`
+construct a coin representation of `G`. `F` may be specified either as
+a `Vector` or a `Set` of vertices of `G`.
+
+If `F` is omitted (or invalid) a face will be automatically selected.
+"""
+struct CoinRepresentation{T}
     circs::Dict{T,Circle}
 
     function CoinRepresentation(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
@@ -42,9 +52,14 @@ function CoinRepresentation(G::SimpleGraph{T}, F::Vector{T}) where {T}
 end
 
 
-function draw(R::CoinRepresentation)
+function draw(R::CoinRepresentation, fill::Symbol = :yellow)
+    newdraw()
     for C in values(R.circs)
-        draw(C, true, color = :yellow)
+        if fill == :none
+            draw(C)
+        else
+            draw(C, true, color = fill)
+        end
     end
     finish()
 end
@@ -55,14 +70,12 @@ end
 
 keys(R::CoinRepresentation) = keys(R.circs)
 values(R::CoinRepresentation) = values(R.circs)
+length(R::CoinRepresentation) = length(R.circs)
 
-# function (f::LFT)(rep::Dict{T,Circle}) where {T}
-#     new_rep = Dict{T,Circle}()
-#     for v ∈ keys(rep)
-#         new_rep[v] = f(rep[v])
-#     end
-#     return new_rep
-# end
+function show(io::IO, R::CoinRepresentation)
+    print(io, "CoinRepresentation of a graph with $(length(R)) vertices")
+end
+
 
 function (f::LFT)(R::CoinRepresentation{T}) where {T}
     new_circs = Dict{T,Circle}()
