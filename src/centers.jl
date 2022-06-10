@@ -154,16 +154,13 @@ and radii `r` and `rr` find the point of tangency
 between the two circles. 
 """
 function tangent_point(c::Complex, r::Real, cc::Complex, rr::Real)
-    
-    d1 = abs(c - cc)
+
     d = r + rr
-
-    # if abs(d1 - d) > 1e-5
-    #     @warn "Are you sure these circles are tangent to each other?"
-    # end
-
     t = r / d
     z = c + t * (cc - c)
 
     return z
 end
+
+tangent_point(C1::Circle, C2::Circle) =
+    tangent_point(center(C1), radius(C1), center(C2), radius(C2))

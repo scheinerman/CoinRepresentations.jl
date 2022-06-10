@@ -27,7 +27,7 @@ function radii(VFX::VF)
         nn = NV(GG)
         for v = 1:nn
             Nv = GG[v]
-            if v ≤ nv 
+            if v ≤ nv
                 Nv = Nv ∩ Set(nv+1:nn)
             else
                 Nv = Nv ∩ Set(1:nv)
@@ -82,3 +82,6 @@ function radii(G::SimpleGraph{T}, out_face::Set = Set{T}()) where {T}
     VFX = VF(G, out_face)
     return radii(VFX)
 end
+
+
+radii(G::SimpleGraph{T}, out_face::Vector{T}) where {T} = radii(G, Set(out_face))

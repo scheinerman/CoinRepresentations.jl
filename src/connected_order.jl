@@ -33,4 +33,3 @@ function find_leaf(T::SimpleGraph)
     i = findfirst(degs)
     return VV[i]
 end
-

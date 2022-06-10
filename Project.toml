@@ -1,7 +1,7 @@
 name = "CoinRepresentations"
 uuid = "1902aba7-7a30-46dc-912b-56f3c6050bba"
 authors = ["Ed Scheinerman <ers@jhu.edu>"]
-version = "0.1.0"
+version = "0.0.1"
 
 
 
