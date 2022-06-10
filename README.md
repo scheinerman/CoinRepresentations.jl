@@ -49,6 +49,22 @@ julia> draw(R)
 produces this:
 ![](dodec-coins.png)
 
+
+### Coin embedding
+Coin representations can be used to provide a planar embedding of a graph
+by placing each vertex at the center of its respective disk.
+
+Use `center_embed(G::SimpleGraph, R::CoinRepresentation)` to give `G`
+such an embedding.
+```
+julia> center_embed(G,R)
+
+julia> draw(G)
+```
+gives this:
+![](dodec-embedded.png)
+
+
 ## Various poorly documented
 
 ### Direct functions

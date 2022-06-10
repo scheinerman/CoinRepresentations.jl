@@ -16,6 +16,7 @@ include("connected_order.jl")
 include("VF.jl")
 include("radii.jl")
 include("centers.jl")
+include("center_embed.jl")
 
 export CoinRepresentation
 

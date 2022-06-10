@@ -1,17 +1,16 @@
 
 """
-    center_embed(G::SimpleGraph)
-Given a (3-connected, planar) graph `G`, use the centers of 
-its coin representation to embed `G`.
+    center_embed(G::SimpleGraph, R::CoinRepresentation)
+Given a (3-connected, planar) graph `G` and coin representation,
+embed `G` by placing vertices of their respective coins. 
 """
-function center_embed(G::SimpleGraph{T}) where {T}
-    rep = coin_rep(G)
-
-    d = Dict{T,Vector{Float64}}()
+function center_embed(G::SimpleGraph{T}, R::CoinRepresentation) where {T}
+    newxy = Dict{T,Vector{Float64}}()
     for v ∈ G.V
-        z = center(rep[v])
-        d[v] = collect(reim(z))
+        z = center(R[v])
+        newxy[v] = collect(reim(z))
     end
 
-    embed(G, d)
+    embed(G, newxy)
 end
+
