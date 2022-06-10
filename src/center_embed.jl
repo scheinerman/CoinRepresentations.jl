@@ -14,3 +14,4 @@ function center_embed(G::SimpleGraph{T}, R::CoinRepresentation{T}) where {T}
     embed(G, newxy)
 end
 
+export center_embed

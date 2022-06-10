@@ -72,8 +72,8 @@ keys(R::CoinRepresentation) = keys(R.circs)
 values(R::CoinRepresentation) = values(R.circs)
 length(R::CoinRepresentation) = length(R.circs)
 
-function show(io::IO, R::CoinRepresentation)
-    print(io, "CoinRepresentation of a graph with $(length(R)) vertices")
+function show(io::IO, R::CoinRepresentation{T}) where T
+    print(io, "CoinRepresentation{$T} of a graph with $(length(R.circs)) vertices")
 end
 
 
@@ -87,6 +87,7 @@ function (f::LFT)(R::CoinRepresentation{T}) where {T}
 end
 
 include("center_embed.jl")
+include("dual_rep.jl")
 
 
 end # module
