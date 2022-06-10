@@ -16,7 +16,6 @@ include("connected_order.jl")
 include("VF.jl")
 include("radii.jl")
 include("centers.jl")
-include("center_embed.jl")
 
 export CoinRepresentation
 
@@ -86,6 +85,8 @@ function (f::LFT)(R::CoinRepresentation{T}) where {T}
     end
     return CoinRepresentation(new_circs)
 end
+
+include("center_embed.jl")
 
 
 end # module
