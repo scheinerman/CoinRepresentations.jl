@@ -1,7 +1,13 @@
-GraphTheory()
+using SimpleGraphs, SimpleDrawing
 using CoinRepresentations
 
+"""
+    ortho_draw(G::SimpleGraph, F)
 
+Given a three-connected planar graph `G` create straight-line 
+drawing of `G` and its dual so that dual edges cross at right angles.
+The face `F` may be specified either as a list or a set (and is optional).
+"""
 function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
     r, rr = radii(G, F)
     z, zz = centers(G, r, rr)
