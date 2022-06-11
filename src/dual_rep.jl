@@ -26,6 +26,9 @@ struct DualCoinRepresentation{T}
     end
 end
 
+DualCoinRepresentation(G::SimpleGraph{T}, F::Vector{T}) where {T} =
+    DualCoinRepresentation(G, Set(F))
+
 function draw(RR::DualCoinRepresentation, fill::Symbol = :yellow)
     newdraw()
     for C ∈ values(RR.circs)
@@ -44,6 +47,6 @@ function draw(RR::DualCoinRepresentation, fill::Symbol = :yellow)
 end
 
 
-function show(io::IO, RR::DualCoinRepresentation{T}) where T
+function show(io::IO, RR::DualCoinRepresentation{T}) where {T}
     print(io, "DualCoinRepresentation{$T} of a graph with $(length(RR.circs)) vertices")
 end

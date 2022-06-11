@@ -72,7 +72,7 @@ keys(R::CoinRepresentation) = keys(R.circs)
 values(R::CoinRepresentation) = values(R.circs)
 length(R::CoinRepresentation) = length(R.circs)
 
-function show(io::IO, R::CoinRepresentation{T}) where T
+function show(io::IO, R::CoinRepresentation{T}) where {T}
     print(io, "CoinRepresentation{$T} of a graph with $(length(R.circs)) vertices")
 end
 

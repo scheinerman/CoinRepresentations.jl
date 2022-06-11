@@ -40,12 +40,12 @@ function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
     negF = first([f for f in GG.V if rr[Set(f)] < 0])
 
     for F ∈ GG[negF]
-        u,v = dd((negF,F))
-        p = tangent_point(z[u],r[u],z[v],r[v])
+        u, v = dd((negF, F))
+        p = tangent_point(z[u], r[u], z[v], r[v])
         f = Set(F)
-        vec = 2*(p - zz[f])
+        vec = 2 * (p - zz[f])
 
-        draw_segment(zz[f], zz[f]+vec, linecolor=:black, linestyle=:dot)
+        draw_segment(zz[f], zz[f] + vec, linecolor = :black, linestyle = :dot)
 
     end
 
