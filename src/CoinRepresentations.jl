@@ -77,18 +77,11 @@ function show(io::IO, R::CoinRepresentation{T}) where {T}
 end
 
 
-function (f::LFT)(R::CoinRepresentation{T}) where {T}
-    new_circs = Dict{T,Circle}()
-
-    for v ∈ keys(R.circs)
-        new_circs[v] = f(R[v])
-    end
-    return CoinRepresentation(new_circs)
-end
-
 include("center_embed.jl")
 include("dual_rep.jl")
 include("ortho_draw.jl")
+include("lft.jl")
+
 
 
 end # module

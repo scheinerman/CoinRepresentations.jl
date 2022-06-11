@@ -1,6 +1,6 @@
 # Examples for `CoinRepresentations`
 
-The example graph `G` used in these files is the dodecahedron graph.
+The  graph `G` used in these examples is the dodecahedron graph.
 
 ## `coin_examples.jl`
 
@@ -10,6 +10,10 @@ of three-connected planar graphs.
 * `dual_coin_ex()` shows a coin representation together with a coin representation of `G`'s dual.
 * `orth_ex()` shows a drawing of `G` and its dual where all edges are straight line segments and dual edges intersect at right angles.
 
-## `coin_lft_example.jl`
+## `coin_lft_examples.jl`
 
-The file `coin_lft_example.jl` demonstrates how a linear fractional transformation may be applied to a coin representation. 
+This file demonstrates how a linear fractional transformation may be applied to a coin representation. In these examples, the transformation is 
+`f(z) = z/(z+1)`.
+
+* `coin_lft_example()` shows the coin representation of the graph after applying `f`.
+* `dual_coin_lft_example()` shows the dual coin representation of the graph after applying `f`.

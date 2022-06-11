@@ -24,6 +24,14 @@ struct DualCoinRepresentation{T}
         end
         new{T}(cc, dc)
     end
+
+    function DualCoinRepresentation(
+        v_dict::Dict{T,Circle},
+        f_dict::Dict{Set{T},Circle},
+    ) where {T}
+        new{T}(v_dict, f_dict)
+    end
+
 end
 
 DualCoinRepresentation(G::SimpleGraph{T}, F::Vector{T}) where {T} =

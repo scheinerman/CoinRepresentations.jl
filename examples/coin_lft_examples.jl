@@ -6,3 +6,10 @@ function coin_lft_example()
     R = CoinRepresentation(G)
     draw(f(R))
 end
+
+function dual_coin_lft_example()
+    G = Dodecahedron()
+    f = LFT(1,0,1,1)
+    RR = DualCoinRepresentation(G)
+    draw(f(RR))
+end
