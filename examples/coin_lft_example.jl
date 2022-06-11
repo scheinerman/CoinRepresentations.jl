@@ -1,4 +1,4 @@
-using SimpleGraphs, SimpleDrawing, CoinRepresentations
+using SimpleGraphs, SimpleDrawing, CoinRepresentations, LinearFractionalTransformations
 
 function coin_lft_example()
     G = Dodecahedron()

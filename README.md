@@ -3,7 +3,8 @@
 Let `G` be a three-connected planar graph. This module finds a 
 mapping from the vertices of `G` to disks in the plane with the
 property that adjacent vertices map to externally tangent disks and
-nonadjacent vertices map to disjoint disks.
+nonadjacent vertices map to disjoint disks. The `examples` directory
+contains demonstrations of this module. 
 
 ## Creating the representation
 
