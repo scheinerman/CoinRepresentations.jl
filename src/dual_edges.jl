@@ -1,7 +1,3 @@
-using SimpleGraphs
-using Bijections, RingLists
-
-
 """
     dual_edges(G::SimpleGraph)
 Given a (3-connected, planar) graph `G` create a `Bijection` `d`
@@ -62,3 +58,6 @@ function directed_dual_edges(G::SimpleGraph{T}) where {T}
     return dd
 
 end
+
+
+export directed_dual_edges, dual_edges

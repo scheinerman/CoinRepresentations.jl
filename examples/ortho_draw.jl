@@ -1,4 +1,4 @@
-using SimpleGraphs, SimpleDrawing
+using SimpleGraphs, SimpleDrawing, Clines
 using CoinRepresentations
 
 """
@@ -13,6 +13,8 @@ function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
     z, zz = centers(G, r, rr)
     GG = dual(G)
 
+    dd = directed_dual_edges(G)
+
     newdraw()
 
     vsize = 4
@@ -26,7 +28,7 @@ function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
         draw_point(z[v], linecolor = :black, color = :white, marker = vsize)
     end
 
-    # draw the dual of G 
+    # draw the edges of the dual of G except for unbounded face
 
     for e ∈ GG.E
         f1, f2 = Set.(e)
@@ -34,6 +36,25 @@ function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
             draw_segment(zz[f1], zz[f2], linecolor = :black, linestyle = :dot)
         end
     end
+
+    # find the unbounded face (negative radius)
+    negF = first([f for f in GG.V if rr[Set(f)] < 0])
+
+    for F ∈ GG[negF]
+        u,v = dd((negF,F))
+        p = tangent_point(z[u],r[u],z[v],r[v])
+        f = Set(F)
+        vec = 2*(p - zz[f])
+
+        draw_segment(zz[f], zz[f]+vec, linecolor=:black, linestyle=:dot)
+
+    end
+
+
+
+
+
+
 
     for v in GG.V
         f = Set(v)

@@ -1,6 +1,6 @@
 module CoinRepresentations
 
-using SimpleGraphs, Clines, RingLists, NLsolve
+using SimpleGraphs, Clines, RingLists, NLsolve, Bijections
 using LinearFractionalTransformations, SimpleDrawing, Plots
 
 import SimpleDrawing: draw

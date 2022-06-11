@@ -1,4 +1,4 @@
-export centers, draw_rep
+export centers, draw_rep, tangent_point
 
 """
     centers(G,vrad,frad)
@@ -162,5 +162,5 @@ function tangent_point(c::Complex, r::Real, cc::Complex, rr::Real)
     return z
 end
 
-tangent_point(C1::Circle, C2::Circle) =
-    tangent_point(center(C1), radius(C1), center(C2), radius(C2))
+# tangent_point(C1::Circle, C2::Circle) =
+#     tangent_point(center(C1), Clines.radius(C1), center(C2), Clines.radius(C2))
