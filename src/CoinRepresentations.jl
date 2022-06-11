@@ -88,6 +88,7 @@ end
 
 include("center_embed.jl")
 include("dual_rep.jl")
+include("ortho_draw.jl")
 
 
 end # module

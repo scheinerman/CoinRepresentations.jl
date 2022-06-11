@@ -1,5 +1,4 @@
-using SimpleGraphs, SimpleDrawing, Clines
-using CoinRepresentations
+export ortho_draw
 
 """
     ortho_draw(G::SimpleGraph, F)

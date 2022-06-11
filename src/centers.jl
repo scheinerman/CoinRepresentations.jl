@@ -98,54 +98,24 @@ function centers(
         uvec /= abs(uvec)     # unit vector from v center toward w center 
 
         v_ctr[w] = v_ctr[vv] + (v_rad[vv] + v_rad[w]) * uvec
-
-
-
-        # break
     end
 
+    # place the origin at the center of the negative radius face circle
+    negF = first([F for F in keys(f_rad) if f_rad[F] < 0])  # find the face with negative radius
+    Fctr = f_ctr[negF]  # get its center
+
+    for v ∈ keys(v_ctr)
+        v_ctr[v] -= Fctr
+    end
+
+    for f ∈ keys(f_ctr)
+        f_ctr[f] -= Fctr
+    end
 
     return v_ctr, f_ctr
 end
 
-"""
-    draw_rep(r,rr,z,zz)
-"""
-function draw_rep(
-    v_rad::Dict{T,Float64},
-    f_rad::Dict{Set{T},Float64},
-    v_ctr::Dict{T,Complex{Float64}},
-    f_ctr::Dict{Set{T},Complex{Float64}},
-) where {T}
-    annotation = false
-    newdraw()
 
-    dual_color = :red
-
-    for f in keys(f_ctr)
-        z = f_ctr[f]
-        rad = f_rad[f]
-        C = Circle(z, f_rad[f] |> abs)
-        if rad > 0
-            draw(C, linecolor = dual_color)
-        else
-            draw(C, linecolor = dual_color, linestyle = :dot)
-        end
-
-        annotation && annotate!(real(z), imag(z), "$f")
-    end
-
-
-    for v ∈ keys(v_ctr)
-        z = v_ctr[v]
-        C = Circle(z, v_rad[v])
-        draw(C)
-        annotation && annotate!(real(z), imag(z), "$v")
-    end
-
-    finish()
-
-end
 
 """
     tangent_point(c,r,cc,rr)
@@ -161,6 +131,3 @@ function tangent_point(c::Complex, r::Real, cc::Complex, rr::Real)
 
     return z
 end
-
-# tangent_point(C1::Circle, C2::Circle) =
-#     tangent_point(center(C1), Clines.radius(C1), center(C2), Clines.radius(C2))
