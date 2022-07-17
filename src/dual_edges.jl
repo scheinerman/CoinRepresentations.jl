@@ -1,12 +1,12 @@
 """
-    dual_edges(G::SimpleGraph)
+    dual_edges(G::UG)
 Given a (3-connected, planar) graph `G` create a `Bijection` `d`
 between the edges of `G` and the edges of its dual.
 
 + If `e` is an edge of `G`, then `d[e]` is its dual edge.
 + If `e` is an edge of the dual of `G`, then `d(e)` is its dual edge.
 """
-function dual_edges(G::SimpleGraph{T}) where {T}
+function dual_edges(G::UG{T}) where {T}
     GG = dual(G)
 
     ET = eltype(G.E)
@@ -31,7 +31,7 @@ edges of its dual. Given an edge from `u` pointing to `v`, then `d[u,v]`
 will be a tuple of faces `f,ff` so that the dual edge `(f,ff)` crosses
 `(u,v)` from right to left. 
 """
-function directed_dual_edges(G::SimpleGraph{T}) where {T}
+function directed_dual_edges(G::UG{T}) where {T}
     GG = dual(G)
 
     ET = eltype(G.E)

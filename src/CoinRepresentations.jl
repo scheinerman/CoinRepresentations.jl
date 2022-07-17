@@ -20,7 +20,7 @@ include("centers.jl")
 export CoinRepresentation
 
 """
-    CoinRepresentation(G::SimpleGraph, F)
+    CoinRepresentation(G::UG, F)
 
 Given a planar, three-connected graph `G` and its outer face `F`
 construct a coin representation of `G`. `F` may be specified either as
@@ -31,7 +31,7 @@ If `F` is omitted (or invalid) a face will be automatically selected.
 struct CoinRepresentation{T}
     circs::Dict{T,Circle}
 
-    function CoinRepresentation(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
+    function CoinRepresentation(G::UG{T}, F::Set{T} = Set{T}()) where {T}
         r, rr = radii(G, F)
         z, zz = centers(G, r, rr)
         cc = Dict{T,Circle}()
@@ -47,7 +47,7 @@ struct CoinRepresentation{T}
     end
 end
 
-function CoinRepresentation(G::SimpleGraph{T}, F::Vector{T}) where {T}
+function CoinRepresentation(G::UG{T}, F::Vector{T}) where {T}
     CoinRepresentation(G, Set(F))
 end
 

@@ -1,13 +1,13 @@
 export ortho_draw
 
 """
-    ortho_draw(G::SimpleGraph, F)
+    ortho_draw(G::UG, F)
 
 Given a three-connected planar graph `G` create straight-line 
 drawing of `G` and its dual so that dual edges cross at right angles.
 The face `F` may be specified either as a list or a set (and is optional).
 """
-function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
+function ortho_draw(G::UG{T}, F::Set{T} = Set{T}()) where {T}
     r, rr = radii(G, F)
     z, zz = centers(G, r, rr)
     GG = dual(G)
@@ -68,4 +68,4 @@ function ortho_draw(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
 
 end
 
-ortho_draw(G::SimpleGraph{T}, F::Vector{T}) where {T} = ortho_draw(G, Set(F))
+ortho_draw(G::UG{T}, F::Vector{T}) where {T} = ortho_draw(G, Set(F))

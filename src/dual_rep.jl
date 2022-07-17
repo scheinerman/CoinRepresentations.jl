@@ -8,7 +8,7 @@ struct DualCoinRepresentation{T}
     circs::Dict{T,Circle}
     dual_circs::Dict{Set{T},Circle}
 
-    function DualCoinRepresentation(G::SimpleGraph{T}, F::Set{T} = Set{T}()) where {T}
+    function DualCoinRepresentation(G::UG{T}, F::Set{T} = Set{T}()) where {T}
         r, rr = radii(G, F)
         z, zz = centers(G, r, rr)
         cc = Dict{T,Circle}()
@@ -34,7 +34,7 @@ struct DualCoinRepresentation{T}
 
 end
 
-DualCoinRepresentation(G::SimpleGraph{T}, F::Vector{T}) where {T} =
+DualCoinRepresentation(G::UG{T}, F::Vector{T}) where {T} =
     DualCoinRepresentation(G, Set(F))
 
 function draw(RR::DualCoinRepresentation, fill::Symbol = :yellow)

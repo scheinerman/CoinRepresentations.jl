@@ -3,7 +3,7 @@
 Return a list of the vertices of `G` such that the induced graph 
 on every initial segment of that list is connected.
 """
-function connected_order(G::SimpleGraph{TT}) where {TT}
+function connected_order(G::UG{TT}) where {TT}
     if !is_connected(G)
         error("Graph must be connected")
     end
@@ -27,7 +27,7 @@ end
 
 
 
-function find_leaf(T::SimpleGraph)
+function find_leaf(T::UG)
     VV = vlist(T)
     degs = [deg(T, v) == 1 for v in VV]
     i = findfirst(degs)

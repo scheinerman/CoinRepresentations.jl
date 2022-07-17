@@ -1,7 +1,7 @@
 export radii
 
 """
-    radii(G::SimpleGraph{T}, out_face::Set{T})
+    radii(G::UG{T}, out_face::Set{T})
 Compute the radii of the 
 circles in the dual coin representation of the 3-connected planar graph `G`.
 The `out_face` argument is optional in which case a face is arbitrarily chosen
@@ -78,10 +78,10 @@ end
 
 
 
-function radii(G::SimpleGraph{T}, out_face::Set = Set{T}()) where {T}
+function radii(G::UG{T}, out_face::Set = Set{T}()) where {T}
     VFX = VF(G, out_face)
     return radii(VFX)
 end
 
 
-radii(G::SimpleGraph{T}, out_face::Vector{T}) where {T} = radii(G, Set(out_face))
+radii(G::UG{T}, out_face::Vector{T}) where {T} = radii(G, Set(out_face))

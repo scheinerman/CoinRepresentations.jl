@@ -12,10 +12,10 @@ struct VF
     Flist::Vector               # list of faces (as sets of vertices)
     Vlookup::Dict               # map vertex to index in Vlist
     Flookup::Dict               # map face to index in Flist (starting from NV(G)+1)
-    VFgraph::SimpleGraph{Int}   # vertex-face incidence graph using indices
+    VFgraph::UG{Int}            # vertex-face incidence graph using indices
     out::Int                    # index of the outside face
 
-    function VF(G::SimpleGraph, out_face::Set = Set{Int}())
+    function VF(G::UG, out_face::Set = Set{Int}())
         Vlist = vlist(G)
         GG = dual(G)
         Flist = Set.(GG.V)
@@ -39,7 +39,7 @@ struct VF
         # vertices 1 through nv correspond to G 
         # vertices nv+1 through nv+nf correspond to G's dual
 
-        VFG = SimpleGraph{Int}()
+        VFG = UG{Int}()
 
         for e in G.E
             v, w = e

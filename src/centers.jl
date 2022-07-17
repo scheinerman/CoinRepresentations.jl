@@ -8,7 +8,7 @@ given their radii. Returns two dictionaries; one for the vertex centers
 and one for the face centers.
 """
 function centers(
-    G::SimpleGraph{T},
+    G::UG{T},
     v_rad::Dict{T,Float64},
     f_rad::Dict{Set{T},Float64},
 ) where {T}
